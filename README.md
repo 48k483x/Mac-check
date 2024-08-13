@@ -1,26 +1,43 @@
-# MacBook Air M2 Verification Tool
+# iOS Bypass and MDM Check Script
 
-![MacBook Air M2](https://placehold.co/600x400?text=MacBook+Air+M2)
+This repository provides a script to check whether an iOS device is MDM (Mobile Device Management) controlled, iCloud locked, or bypassed. The script helps determine:
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![GitHub stars](https://img.shields.io/github/stars/yourusername/macbook-m2-verify.svg)](https://github.com/yourusername/macbook-m2-verify/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/yourusername/macbook-m2-verify.svg)](https://github.com/yourusername/macbook-m2-verify/network)
-[![GitHub issues](https://img.shields.io/github/issues/yourusername/macbook-m2-verify.svg)](https://github.com/yourusername/macbook-m2-verify/issues)
+1. **MDM Bypass Status**: Whether the device has an MDM profile installed or if it has been bypassed.
+2. **iCloud Lock Status**: Whether the device is iCloud locked and if it has been bypassed.
 
-A comprehensive tool to verify the authenticity and status of MacBook Air M2 devices.
+## Table of Contents
 
-## Features
+- [Requirements](#requirements)
+- [Usage](#usage)
+  - [Check MDM Bypass Status](#1-check-mdm-bypass-status)
+  - [Check iCloud Lock Status](#2-check-icloud-lock-status)
+  - [Detecting High-Quality Bypass](#3-detecting-high-quality-bypass)
+- [Conclusion](#conclusion)
+- [Disclaimer](#disclaimer)
 
-- ✅ MDM enrollment detection
-- 🔒 iCloud activation status check
-- 🛡️ Security and system integrity verification
-- 🕵️ Advanced bypass detection
-- 📊 Detailed reporting of results
+## Requirements
 
-## Quick Start
+Before running the script, ensure you have the following:
+
+- **Jailbroken iOS Device**: Some checks require a jailbroken environment.
+- **Libimobiledevice Tools**: Install tools like `ideviceinfo`, `ideviceprovision`, `cfgutil`, or `idevicediagnostics`.
+- **Terminal/Command Line Access**: Necessary to run the commands provided.
+
+## Usage
+
+### 1. Check MDM Bypass Status
+
+This section checks if the device is under MDM control or if it has been bypassed.
 
 ```bash
-git clone https://github.com/yourusername/macbook-m2-verify.git
-cd macbook-m2-verify
-chmod +x macbook_m2_verify.sh
-sudo ./macbook_m2_verify.sh
+# Check for MDM Profile
+ideviceinfo -k ConfigurationProfiles
+
+# Another method to check for MDM
+ideviceprovision -l | grep -i "Profile" 
+
+# Check for MDM-related restrictions
+ideviceinfo -k Restrictions | grep -i "mdm"
+
+# Check MDM Profile presence in system files (Jailbreak required)
+ls /var/mobile/Library/ConfigurationProfiles/

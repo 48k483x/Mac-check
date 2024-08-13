@@ -41,3 +41,40 @@ ideviceinfo -k Restrictions | grep -i "mdm"
 
 # Check MDM Profile presence in system files (Jailbreak required)
 ls /var/mobile/Library/ConfigurationProfiles/
+```
+### 2. Check Icloud Lock Status
+
+```bash
+# Check Activation Lock Status
+ideviceinfo -k ActivationState
+
+# Check iCloud Account Status
+ideviceinfo -k AppleAccountInfo
+
+# Verify iCloud Bypass (Jailbreak required)
+cat /var/root/Library/Lockdown/activation_records.plist | grep -i "bypass"
+```
+
+### 3. Detecting High Quality Bypass
+
+```bash
+# Check Activation Lock Status
+ideviceinfo -k ActivationState
+
+# Check iCloud Account Status
+ideviceinfo -k AppleAccountInfo
+
+# Verify iCloud Bypass (Jailbreak required)
+cat /var/root/Library/Lockdown/activation_records.plist | grep -i "bypass"
+
+```
+
+### 4. Conclusion 
+
+```bash
+This script provides a basic method to detect if an iOS device is under MDM control or iCloud locked and whether it has been bypassed. For more in-depth analysis, additional tools or methods might be required, especially when dealing with high-quality bypasses.
+```
+
+### 5. Disclaimer
+
+

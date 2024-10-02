@@ -75,6 +75,3 @@ cat /var/root/Library/Lockdown/activation_records.plist | grep -i "bypass"
 This script provides a basic method to detect if an iOS device is under MDM control or iCloud locked and whether it has been bypassed. For more in-depth analysis, additional tools or methods might be required, especially when dealing with high-quality bypasses.
 ```
 
-### 5. Disclaimer
-
-
